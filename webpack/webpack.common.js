@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
@@ -34,6 +35,7 @@ module.exports = {
     filename: 'bundle.js',
   },
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '..', './src/index.html'),
     }),
