@@ -4,7 +4,7 @@ import { Table, Container } from 'react-bootstrap'
 const CompanyTable = (props: any) => {
     const { companies } = props
     return (
-        <Table striped bordered>
+        <Table striped bordered className='mt-4'>
             <thead>
                 <tr>
                     <th>#</th>

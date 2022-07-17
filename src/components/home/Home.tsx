@@ -13,7 +13,7 @@ const Home = (props: any) => {
     } = props
 
     return (
-        <Container>
+        <Container className='pt-2'>
             <CompanyForm 
                 handleFormSubmit={handleFormSubmit}
                 formHookSubmit={formHookSubmit}

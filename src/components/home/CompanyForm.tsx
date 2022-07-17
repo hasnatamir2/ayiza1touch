@@ -18,9 +18,9 @@ const CompanyForm = ({
                         noValidate
                         validated={Object.keys(errors).length > 0}
                     >
-                        <Form.Group as={Row} controlId="formBusinessName">
-                            <Form.Label sm={4}>Business name</Form.Label>
-                            <Col sm={8}>
+                        <Row>
+                            <Form.Group as={Col} sm={6} controlId="formBusinessName">
+                                <Form.Label>Business name</Form.Label>
                                 <Form.Control
                                     type="text"
                                     placeholder="Business name"
@@ -33,11 +33,9 @@ const CompanyForm = ({
                                         Business name is required
                                     </Form.Control.Feedback>
                                 )}
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId="formBusinessType">
-                            <Form.Label sm={4}>Type of Business</Form.Label>
-                            <Col sm={8}>
+                            </Form.Group>
+                            <Form.Group as={Col} sm={6} controlId="formBusinessType">
+                                <Form.Label>Type of Business</Form.Label>
                                 <Form.Control
                                     as="select"
                                     type="text"
@@ -55,11 +53,9 @@ const CompanyForm = ({
                                         Business type is required
                                     </Form.Control.Feedback>
                                 )}
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId="formBusinessIndustry">
-                            <Form.Label sm={4}>Industry</Form.Label>
-                            <Col sm={8}>
+                            </Form.Group>
+                            <Form.Group as={Col} sm={6} controlId="formBusinessIndustry">
+                                <Form.Label>Industry</Form.Label>
                                 <Form.Control
                                     as="select"
                                     type="select"
@@ -77,11 +73,10 @@ const CompanyForm = ({
                                         Business industry is required
                                     </Form.Control.Feedback>
                                 )}
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId="formBusinessCountry">
-                            <Form.Label sm={4}>Country</Form.Label>
-                            <Col sm={8}>
+                            </Form.Group>
+
+                            <Form.Group as={Col} sm={6} controlId="formBusinessCountry">
+                                <Form.Label>Country</Form.Label>
                                 <Form.Control
                                     as="select"
                                     type="text"
@@ -99,11 +94,10 @@ const CompanyForm = ({
                                         Business country is required
                                     </Form.Control.Feedback>
                                 )}
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId="formBusinessCurrency">
-                            <Form.Label sm={4}>Currency</Form.Label>
-                            <Col sm={8}>
+
+                            </Form.Group>
+                            <Form.Group as={Col} sm={6} controlId="formBusinessCurrency">
+                                <Form.Label>Currency</Form.Label>
                                 <Form.Control
                                     as="select"
                                     type="text"
@@ -121,11 +115,9 @@ const CompanyForm = ({
                                         Business currency is required
                                     </Form.Control.Feedback>
                                 )}
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId="formBusinessTimeZone">
-                            <Form.Label sm={4}>Time Zone</Form.Label>
-                            <Col sm={8}>
+                            </Form.Group>
+                            <Form.Group as={Col} sm={6} controlId="formBusinessTimeZone">
+                                <Form.Label>Time Zone</Form.Label>
                                 <Form.Control
                                     as="select"
                                     type="text"
@@ -143,11 +135,9 @@ const CompanyForm = ({
                                         Time zone is required
                                     </Form.Control.Feedback>
                                 )}
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId="formBusinessFinancialYear">
-                            <Form.Label sm={4}>Financial Year</Form.Label>
-                            <Col sm={8}>
+                            </Form.Group>
+                            <Form.Group as={Col} sm={6} controlId="formBusinessFinancialYear">
+                                <Form.Label>Financial Year</Form.Label>
                                 <Form.Control
                                     as="select"
                                     type="text"
@@ -167,10 +157,9 @@ const CompanyForm = ({
                                         Financial year is required
                                     </Form.Control.Feedback>
                                 )}
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId="formBusinessCalculateVAT">
-                            <Col sm={8}>
+                            </Form.Group>
+                            <Form.Group as={Col} controlId="formBusinessCalculateVAT">
+                            <Form.Label> </Form.Label>
                                 <Form.Check
                                     type="switch"
                                     id="custom-switch"
@@ -178,10 +167,12 @@ const CompanyForm = ({
                                     as="input"
                                     {...registerInput('calculateVAT')}
                                 />
-                            </Col>
-                        </Form.Group>
+                            </Form.Group>
+                            <Col sm={12} className="mt-4">
 
-                        <Button type="submit">Submit Company</Button>
+                                <Button type="submit">Submit Company</Button>
+                            </Col>
+                        </Row>
                     </Form>
                 </Card.Text>
             </Card.Body>
