@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Home from '../../components/home/Home'
-import { setValues, fetchCompany } from '../../redux/Slices/CompanySlice'
+import { setValues } from '../../redux/Slices/CompanySlice'
 import { useForm } from 'react-hook-form'
 
 const HomeContainer: React.FC = () => {
