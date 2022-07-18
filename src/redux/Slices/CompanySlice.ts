@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import CompanyService from '../../services/CompanyService'
+import { fetchCompanies } from '../Actions/CompanyActions'
 
 interface Company {
   businessName: string
@@ -24,13 +25,6 @@ const initialState: CompanyState = {
   isLoading: false,
 }
 
-export const fetchCompany = createAsyncThunk(
-  'company/fetchCompany',
-  async () => {
-    return await CompanyService.getCompany()
-  }
-)
-
 export const companySlice = createSlice({
   name: 'company',
   initialState,
@@ -43,14 +37,14 @@ export const companySlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchCompany.pending.type]: (state) => {
+    [fetchCompanies.pending.type]: (state) => {
       state.isLoading = true
     },
-    [fetchCompany.fulfilled.type]: (state, action: PayloadAction<any>) => {
+    [fetchCompanies.fulfilled.type]: (state, action: PayloadAction<any>) => {
       state.isLoading = false
       state.companies = [...state.companies, action.payload]
     },
-    [fetchCompany.rejected.type]: (state) => {
+    [fetchCompanies.rejected.type]: (state) => {
       state.isLoading = false
     },
   },

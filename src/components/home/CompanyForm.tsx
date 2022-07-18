@@ -1,11 +1,11 @@
-import React from 'react'
-import { Container, Card, Form, Row, Col, Button } from 'react-bootstrap'
+import { Spinner, Card, Form, Row, Col, Button } from 'react-bootstrap'
 
 const CompanyForm = ({
     handleFormSubmit,
     formHookSubmit,
     registerInput,
     errors,
+    isLoading,
 }: any) => {
 
     return (
@@ -158,8 +158,8 @@ const CompanyForm = ({
                                     </Form.Control.Feedback>
                                 )}
                             </Form.Group>
-                            <Form.Group as={Col} controlId="formBusinessCalculateVAT">
-                            <Form.Label> </Form.Label>
+                            <Form.Group as={Col} sm={6} controlId="formBusinessCalculateVAT">
+                                <Form.Label> </Form.Label>
                                 <Form.Check
                                     type="switch"
                                     id="custom-switch"
@@ -168,10 +168,13 @@ const CompanyForm = ({
                                     {...registerInput('calculateVAT')}
                                 />
                             </Form.Group>
-                            <Col sm={12} className="mt-4">
-
-                                <Button type="submit">Submit Company</Button>
+                            <Col className="mt-4">
+                                <Button type="submit" disabled={isLoading}>
+                                    {isLoading ? <Spinner animation="border" /> : "Save"}
+                                </Button>
                             </Col>
+                            
+
                         </Row>
                     </Form>
                 </Card.Text>

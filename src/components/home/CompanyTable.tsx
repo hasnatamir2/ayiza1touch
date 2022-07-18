@@ -4,7 +4,7 @@ import { Table, Container } from 'react-bootstrap'
 const CompanyTable = (props: any) => {
     const { companies } = props
     return (
-        <Table striped bordered className='mt-4'>
+        <Table striped bordered className="mt-4">
             <thead>
                 <tr>
                     <th>#</th>
@@ -30,7 +30,13 @@ const CompanyTable = (props: any) => {
                             <td>{company.currency}</td>
                             <td>{company.timezone}</td>
                             <td>{company.financialYear}</td>
-                            <td>{company.calculateVAT ? 'True' : 'False'}</td>
+                            <td>
+                                {company.calculateVAT ? (
+                                    <p className="text-success">True</p>
+                                ) : (
+                                    <p className="text-danger">False</p>
+                                )}
+                            </td>
                         </tr>
                     )
                 })}
@@ -39,4 +45,4 @@ const CompanyTable = (props: any) => {
     )
 }
 
-export default CompanyTable;
+export default CompanyTable

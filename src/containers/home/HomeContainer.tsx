@@ -22,6 +22,7 @@ const HomeContainer: React.FC = () => {
             formHookSubmit={handleSubmit}
             registerInput={register}
             errors={errors}
+            isLoading={isLoading}
         />
     )
 }

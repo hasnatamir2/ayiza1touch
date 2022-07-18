@@ -10,6 +10,7 @@ const Home = (props: any) => {
         formHookSubmit,
         registerInput,
         errors,
+        isLoading,
     } = props
 
     return (
@@ -19,6 +20,7 @@ const Home = (props: any) => {
                 formHookSubmit={formHookSubmit}
                 registerInput={registerInput}
                 errors={errors}
+                isLoading={isLoading}
             />
             <CompanyTable companies={companies} />
         </Container>
