@@ -148,9 +148,9 @@ const CompanyForm = ({
                                         required: true,
                                     })}
                                 >
-                                    <option>Select1</option>
-                                    <option>Select2</option>
-                                    <option>Select3</option>
+                                    <option>2020</option>
+                                    <option>2021</option>
+                                    <option>2022</option>
                                 </Form.Control>
                                 {errors?.financialYear?.type === 'required' && (
                                     <Form.Control.Feedback type="invalid">
@@ -173,8 +173,6 @@ const CompanyForm = ({
                                     {isLoading ? <Spinner animation="border" /> : "Save"}
                                 </Button>
                             </Col>
-                            
-
                         </Row>
                     </Form>
                 </Card.Text>
