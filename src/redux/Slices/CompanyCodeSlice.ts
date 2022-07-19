@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import CompanyService from '../../services/CompanyService'
-import { fetchCompanies } from '../Actions/CompanyActions'
+import CompanyService from '../../services/CompanyCodeService'
+import { fetchCompanies } from '../Actions/CompanyCodeActions'
 
-interface Company {
+interface CompanyCode {
   businessName: string
   businessType: string
   industry: string
@@ -14,18 +14,18 @@ interface Company {
   calculateVAT: boolean
 }
 
-export interface CompanyState {
-  companies: Company[]
+export interface CompanyCodeState {
+  companies: CompanyCode[]
   isLoading: boolean
 }
 
-const initialState: CompanyState = {
+const initialState: CompanyCodeState = {
   companies: [],
 
   isLoading: false,
 }
 
-export const companySlice = createSlice({
+export const CompanyCodeSlice = createSlice({
   name: 'company',
   initialState,
   reducers: {
@@ -50,5 +50,5 @@ export const companySlice = createSlice({
   },
 })
 
-export const { setValues, resetValues } = companySlice.actions
-export default companySlice.reducer
+export const { setValues, resetValues } = CompanyCodeSlice.actions
+export default CompanyCodeSlice.reducer
