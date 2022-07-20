@@ -1,4 +1,4 @@
-import { Table, Container } from 'react-bootstrap'
+import { Table, Container, Button } from 'react-bootstrap'
 
 const TenantsTable = (props: any) => {
   const { tenants } = props
@@ -16,6 +16,7 @@ const TenantsTable = (props: any) => {
             <th>Currency</th>
             <th>Time Zone</th>
             <th>Amount</th>
+            <th>Options</th>
           </tr>
         </thead>
         <tbody>
@@ -31,6 +32,10 @@ const TenantsTable = (props: any) => {
                 <td>{tenant.currency}</td>
                 <td>{tenant.timeZone}</td>
                 <td>{tenant.amount}</td>
+                <td>
+                  <Button>Details</Button>
+                  <Button>Setup</Button>
+                </td>
               </tr>
             )
           })}
