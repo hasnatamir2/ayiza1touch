@@ -1,5 +1,4 @@
-import React from 'react'
-import { Table, Container, Card, Button, Spinner } from 'react-bootstrap'
+import { Table, Container, Card, Button } from 'react-bootstrap'
 
 const CompanyTable = (props: any) => {
   const { companies, isLoading, Navigate } = props

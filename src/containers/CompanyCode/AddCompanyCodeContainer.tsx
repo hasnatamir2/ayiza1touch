@@ -35,7 +35,6 @@ const CompanyCodeContainer: React.FC = () => {
     navigate('/companyCode')
   }
 
-  console.log(watch())
 
   return (
     <CompanyCode

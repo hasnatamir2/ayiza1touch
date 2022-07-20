@@ -1,36 +1,32 @@
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import AyizaLogo from '../../assets/images/Ayiza-Logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
-const NavbarMain = (props: any) => {
+const NavbarAdmin = (props: any) => {
   return (
     <Navbar bg="dark" variant="dark" sticky="top" expand="lg">
-      <Navbar.Brand>
-        <Link to="/">
-          <img src={AyizaLogo} alt="Ayiza Logo" />
-        </Link>
-      </Navbar.Brand>
+      <Navbar.Brand>Ayiza System Admin</Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll" className="justify-content-end">
         <Nav className="" navbarScroll>
-          <Nav.Link>
-            <Link to="/companyCode">
-              {' '}
-              <FontAwesomeIcon icon={solid('add')} /> Add Company Code
-            </Link>
-          </Nav.Link>
           <NavDropdown
             title={<FontAwesomeIcon icon={solid('user')} />}
             align="end"
             id="basic-nav-dropdown"
           >
-            <NavDropdown.Item>
-              <Link to="/adminPanel">Admin Panel</Link>
+            <NavDropdown.Item disabled>
+              <Link to="/profile" className="text-muted">
+                {' '}
+                My Profile
+              </Link>
             </NavDropdown.Item>
+            <NavDropdown.Divider />
             <NavDropdown.Item>
-              <Link to="/login">Login</Link>
+              <Link to="/login" className="text-danger">
+                {' '}
+                Logout
+              </Link>
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
@@ -39,4 +35,4 @@ const NavbarMain = (props: any) => {
   )
 }
 
-export default NavbarMain
+export default NavbarAdmin

@@ -1,4 +1,13 @@
 /* 
+    common styles
+*/
+.min-vh-90 {
+    min-height: 90vh;
+}
+
+
+
+/* 
     card component
 */
 
@@ -7,6 +16,16 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.tile-card {
+    border-radius: 0;
+    border: 1px solid #e6e6e6;
+    text-align: center;
+}
+
+/* 
+    form component
+*/
 
 .custom-switch > .form-check-input:checked{
     background-color: var(--success);
@@ -17,6 +36,8 @@
 .form-signin {
     max-width: 330px;
     padding: 15px;
+    position: relative;
+    transform: translateY(25%);
 }
 
 .floating-input-group {
@@ -28,4 +49,25 @@
 .floating-input-group .custom-floating-input .form-control {
     border-radius: 0;
     border: 0;
+}
+
+
+
+/* 
+custom form field
+*/
+.form-control {
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid darkgray;
+    font-size: .8rem;
+}
+
+.form-control[required] {
+    border-left: 1px solid var(--danger);
+}
+
+.form-label {
+    font-size: .8rem;
+    color: var(--success);
 }

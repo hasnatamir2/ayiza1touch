@@ -4,10 +4,10 @@ import AyizaLogo from '../../../assets/images/Ayiza-Logo.png'
 
 const Login = () => {
   return (
-    <Container className="form-signin w-100 m-auto">
+    <Container className="form-signin w-100">
       <Form className="text-center">
         <img className="mb-4" src={AyizaLogo} alt="" width="72" height="57" />
-        <h1 className="h3 mb-3">Please sign in</h1>
+        <h1 className="h3 mb-3 text-dark">Please sign in</h1>
         <div className="floating-input-group">
           <FloatingLabel
             controlId="floatingInput"
