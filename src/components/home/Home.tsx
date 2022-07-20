@@ -1,4 +1,16 @@
 import { Container, Card } from 'react-bootstrap'
+import Breadcrumbs from '../common/Breadcrumb'
+
+const cr = [
+  {
+    name: 'Home',
+    path: '/'
+  },
+  {
+    name: 'Tenants',
+    path: '/tenants'
+  }
+]
 
 const Home = (props: any) => {
   return (

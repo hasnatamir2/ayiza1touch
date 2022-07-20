@@ -19,7 +19,7 @@ const CompanyTable = (props: any) => {
           </div>
         </Card.Header>
         <Card.Body className="p-0">
-          <Table striped size="sm" className="mt-4 mb-0">
+          <Table striped size="sm" className="mb-0">
             <thead>
               <tr>
                 <th>#</th>

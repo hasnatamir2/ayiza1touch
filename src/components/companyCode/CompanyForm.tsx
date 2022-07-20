@@ -35,8 +35,12 @@ const CompanyForm = ({
         </div>
       </Card.Header>
       <Card.Body>
-        <Card.Text>
-          <Form noValidate validated={Object.keys(errors).length > 0}>
+        <>
+          <Form
+            noValidate
+            validated={Object.keys(errors).length > 0}
+            className="center-form"
+          >
             <Form.Group as={Row} controlId="formBusinessName" className="mt-2">
               <Form.Label column sm={3}>
                 Business name
@@ -86,7 +90,7 @@ const CompanyForm = ({
               <Col sm={8}>
                 <Form.Control
                   as="select"
-                  type="text"
+                  type="select"
                   placeholder="Business type"
                   required
                   {...registerInput('businessType', {
@@ -172,7 +176,7 @@ const CompanyForm = ({
               <Col sm={8}>
                 <Form.Control
                   as="select"
-                  type="text"
+                  type="select"
                   placeholder="Business country"
                   required
                   // defaultValue={values.country}
@@ -215,7 +219,7 @@ const CompanyForm = ({
               <Col sm={8}>
                 <Form.Control
                   as="select"
-                  type="text"
+                  type="select"
                   placeholder="Business Currency"
                   required
                   // defaultValue={values.currency}
@@ -258,7 +262,7 @@ const CompanyForm = ({
               <Col sm={8}>
                 <Form.Control
                   as="select"
-                  type="text"
+                  type="select"
                   placeholder="Time Zone"
                   required
                   // defaultValue={values.timezone}
@@ -300,7 +304,7 @@ const CompanyForm = ({
               <Col sm={8}>
                 <Form.Control
                   as="select"
-                  type="text"
+                  type="select"
                   placeholder="Financial Year"
                   required
                   // defaultValue={values.financialYear}
@@ -369,7 +373,7 @@ const CompanyForm = ({
               </Col>
             </Form.Group>
           </Form>
-        </Card.Text>
+        </>
       </Card.Body>
     </Card>
   )
