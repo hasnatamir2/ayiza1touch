@@ -1,6 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import CompanyService from '../../services/CompanyCodeService'
 import { fetchCompanies } from '../Actions/CompanyCodeActions'
 
 interface CompanyCode {
@@ -14,7 +13,7 @@ interface CompanyCode {
   calculateVAT: boolean
 }
 
-export interface CompanyCodeState {
+interface CompanyCodeState {
   companies: CompanyCode[]
   isLoading: boolean
 }

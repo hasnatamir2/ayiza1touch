@@ -1,12 +1,15 @@
-import NavbarMain from '../common/NavbarMain'
+import NavbarAdmin from '../common/NavbarAdmin'
 import FooterMain from '../common/FooterMain'
+import SidebarAdmin from '../common/SidebarAdmin'
 import { Container } from 'react-bootstrap'
 
 const AdminLayout = (props: any) => {
   return (
     <div className="d-flex flex-column min-vh-100">
-      <NavbarMain />
-      <Container>{props.children}</Container>
+      <NavbarAdmin />
+      <SidebarAdmin>
+        <Container>{props.children}</Container>
+      </SidebarAdmin>
       <FooterMain />
     </div>
   )
