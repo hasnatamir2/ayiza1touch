@@ -10,6 +10,7 @@ const CompanyCode = (props: any) => {
         registerInput,
         errors,
         isLoading,
+        navigate,
     } = props
 
     return (
@@ -20,6 +21,7 @@ const CompanyCode = (props: any) => {
                 registerInput={registerInput}
                 errors={errors}
                 isLoading={isLoading}
+                navigate={navigate}
             />
         </Container>
     )

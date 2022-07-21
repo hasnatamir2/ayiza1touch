@@ -8,8 +8,6 @@ import {
   OverlayTrigger,
   Tooltip,
 } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 const CompanyForm = ({
   handleFormSubmit,
@@ -17,21 +15,33 @@ const CompanyForm = ({
   registerInput,
   errors,
   isLoading,
+  navigate,
 }: any) => {
-  console.log(errors)
   return (
     <Card className="border-0">
       <Card.Header>
         <div className="card-header-content">
           <span>Add Company Codes</span>
-          <Button
-            type="submit"
-            disabled={isLoading}
-            onClick={formHookSubmit(handleFormSubmit)}
-            variant="outline-success"
-          >
-            {isLoading ? <Spinner animation="border" /> : 'Save'}
-          </Button>
+          <div>
+            <Button
+              type="submit"
+              disabled={isLoading}
+              onClick={() => navigate(-1)}
+              variant="outline-secondary"
+              className="btn back-but"
+            >
+              {isLoading ? <Spinner animation="border" /> : 'Back'}
+            </Button>
+            <Button
+              type="submit"
+              disabled={isLoading}
+              onClick={formHookSubmit(handleFormSubmit)}
+              variant="outline-success"
+              className="btn save-but"
+            >
+              {isLoading ? <Spinner animation="border" /> : 'Save'}
+            </Button>
+          </div>
         </div>
       </Card.Header>
       <Card.Body>
@@ -64,13 +74,6 @@ const CompanyForm = ({
                     },
                   })}
                 />
-                {errors.businessName && (
-                  <Form.Control.Feedback type="invalid">
-                    {errors.businessName.message}
-                  </Form.Control.Feedback>
-                )}
-              </Col>
-              <Col className="d-flex align-items-center">
                 <OverlayTrigger
                   placement="bottom"
                   overlay={
@@ -79,8 +82,19 @@ const CompanyForm = ({
                     </Tooltip>
                   }
                 >
-                  <FontAwesomeIcon icon={solid('circle-info')} />
+                  <span
+                    className="help-tp"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                  >
+                    i
+                  </span>
                 </OverlayTrigger>
+                {errors.businessName && (
+                  <Form.Control.Feedback type="invalid">
+                    {errors.businessName.message}
+                  </Form.Control.Feedback>
+                )}
               </Col>
             </Form.Group>
             <Form.Group as={Row} controlId="formBusinessType" className="mt-2">
@@ -102,13 +116,6 @@ const CompanyForm = ({
                   <option>Select2</option>
                   <option>Select3</option>
                 </Form.Control>
-                {errors?.businessType?.type === 'required' && (
-                  <Form.Control.Feedback type="invalid">
-                    Business type is required
-                  </Form.Control.Feedback>
-                )}
-              </Col>
-              <Col className="d-flex align-items-center">
                 <OverlayTrigger
                   placement="bottom"
                   overlay={
@@ -119,8 +126,19 @@ const CompanyForm = ({
                     </Tooltip>
                   }
                 >
-                  <FontAwesomeIcon icon={solid('circle-info')} />
+                  <span
+                    className="help-tp"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                  >
+                    i
+                  </span>
                 </OverlayTrigger>
+                {errors?.businessType?.type === 'required' && (
+                  <Form.Control.Feedback type="invalid">
+                    Business type is required
+                  </Form.Control.Feedback>
+                )}
               </Col>
             </Form.Group>
             <Form.Group
@@ -146,13 +164,6 @@ const CompanyForm = ({
                   <option>Industry2</option>
                   <option>Industry3</option>
                 </Form.Control>
-                {errors?.industry?.type === 'required' && (
-                  <Form.Control.Feedback type="invalid">
-                    Business industry is required
-                  </Form.Control.Feedback>
-                )}
-              </Col>
-              <Col className="d-flex align-items-center">
                 <OverlayTrigger
                   placement="bottom"
                   overlay={
@@ -161,8 +172,19 @@ const CompanyForm = ({
                     </Tooltip>
                   }
                 >
-                  <FontAwesomeIcon icon={solid('circle-info')} />
+                  <span
+                    className="help-tp"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                  >
+                    i
+                  </span>
                 </OverlayTrigger>
+                {errors?.industry?.type === 'required' && (
+                  <Form.Control.Feedback type="invalid">
+                    Business industry is required
+                  </Form.Control.Feedback>
+                )}
               </Col>
             </Form.Group>
             <Form.Group
@@ -186,13 +208,6 @@ const CompanyForm = ({
                   <option>Select2</option>
                   <option>Select3</option>
                 </Form.Control>
-                {errors?.country?.type === 'required' && (
-                  <Form.Control.Feedback type="invalid">
-                    Business country is required
-                  </Form.Control.Feedback>
-                )}
-              </Col>
-              <Col className="d-flex align-items-center">
                 <OverlayTrigger
                   placement="bottom"
                   overlay={
@@ -204,8 +219,19 @@ const CompanyForm = ({
                     </Tooltip>
                   }
                 >
-                  <FontAwesomeIcon icon={solid('circle-info')} />
+                  <span
+                    className="help-tp"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                  >
+                    i
+                  </span>
                 </OverlayTrigger>
+                {errors?.country?.type === 'required' && (
+                  <Form.Control.Feedback type="invalid">
+                    Business country is required
+                  </Form.Control.Feedback>
+                )}
               </Col>
             </Form.Group>
             <Form.Group
@@ -229,13 +255,6 @@ const CompanyForm = ({
                   <option>Select2</option>
                   <option>Select3</option>
                 </Form.Control>
-                {errors?.currency?.type === 'required' && (
-                  <Form.Control.Feedback type="invalid">
-                    Business currency is required
-                  </Form.Control.Feedback>
-                )}
-              </Col>
-              <Col className="d-flex align-items-center">
                 <OverlayTrigger
                   placement="bottom"
                   overlay={
@@ -247,8 +266,19 @@ const CompanyForm = ({
                     </Tooltip>
                   }
                 >
-                  <FontAwesomeIcon icon={solid('circle-info')} />
+                  <span
+                    className="help-tp"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                  >
+                    i
+                  </span>
                 </OverlayTrigger>
+                {errors?.currency?.type === 'required' && (
+                  <Form.Control.Feedback type="invalid">
+                    Business currency is required
+                  </Form.Control.Feedback>
+                )}
               </Col>
             </Form.Group>
             <Form.Group
@@ -272,13 +302,6 @@ const CompanyForm = ({
                   <option>Select2</option>
                   <option>Select3</option>
                 </Form.Control>
-                {errors?.timezone?.type === 'required' && (
-                  <Form.Control.Feedback type="invalid">
-                    Time zone is required
-                  </Form.Control.Feedback>
-                )}
-              </Col>
-              <Col className="d-flex align-items-center">
                 <OverlayTrigger
                   placement="bottom"
                   overlay={
@@ -289,8 +312,19 @@ const CompanyForm = ({
                     </Tooltip>
                   }
                 >
-                  <FontAwesomeIcon icon={solid('circle-info')} />
+                  <span
+                    className="help-tp"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                  >
+                    i
+                  </span>
                 </OverlayTrigger>
+                {errors?.timezone?.type === 'required' && (
+                  <Form.Control.Feedback type="invalid">
+                    Time zone is required
+                  </Form.Control.Feedback>
+                )}
               </Col>
             </Form.Group>
             <Form.Group
@@ -317,13 +351,6 @@ const CompanyForm = ({
                   <option>2021</option>
                   <option>2022</option>
                 </Form.Control>
-                {errors?.financialYear?.type === 'required' && (
-                  <Form.Control.Feedback type="invalid">
-                    Financial year is required
-                  </Form.Control.Feedback>
-                )}
-              </Col>
-              <Col className="d-flex align-items-center">
                 <OverlayTrigger
                   placement="bottom"
                   overlay={
@@ -335,8 +362,19 @@ const CompanyForm = ({
                     </Tooltip>
                   }
                 >
-                  <FontAwesomeIcon icon={solid('circle-info')} />
+                  <span
+                    className="help-tp"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                  >
+                    i
+                  </span>
                 </OverlayTrigger>
+                {errors?.financialYear?.type === 'required' && (
+                  <Form.Control.Feedback type="invalid">
+                    Financial year is required
+                  </Form.Control.Feedback>
+                )}
               </Col>
             </Form.Group>
             <Form.Group
@@ -355,8 +393,6 @@ const CompanyForm = ({
                   variant="success"
                   {...registerInput('calculateVAT')}
                 />
-              </Col>
-              <Col className="d-flex align-items-center">
                 <OverlayTrigger
                   placement="bottom"
                   overlay={
@@ -368,7 +404,13 @@ const CompanyForm = ({
                     </Tooltip>
                   }
                 >
-                  <FontAwesomeIcon icon={solid('circle-info')} />
+                  <span
+                    className="help-tp"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                  >
+                    i
+                  </span>
                 </OverlayTrigger>
               </Col>
             </Form.Group>

@@ -9,9 +9,8 @@ const SidebarAdmin = (props: any) => {
     <Row>
       <Col sm={2}>
         <Nav
-          id="sidebarMenu"
           variant="tabs"
-          className="d-md-block bg-light flex-column min-vh-90"
+          className="d-md-block bg-light flex-column min-vh-90 sidebar-menu"
         >
           <Nav.Item>
             <Nav.Link eventKey="/adminPanel/tenants" className="border-0">

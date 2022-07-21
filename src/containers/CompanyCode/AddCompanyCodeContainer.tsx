@@ -44,6 +44,7 @@ const CompanyCodeContainer: React.FC = () => {
       registerInput={register}
       errors={errors}
       isLoading={isLoading}
+      navigate={navigate}
     />
   )
 }

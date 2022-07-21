@@ -6,7 +6,7 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 const NavbarMain = (props: any) => {
   return (
-    <Navbar bg="dark" variant="dark" sticky="top" expand="lg">
+    <Navbar bg="dark" variant="dark" sticky="top" expand="lg" id="mainNav">
       <Navbar.Brand>
         <Link to="/">
           <img src={AyizaLogo} alt="Ayiza Logo" />
