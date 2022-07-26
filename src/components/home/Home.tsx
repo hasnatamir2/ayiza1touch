@@ -4,22 +4,24 @@ import Breadcrumbs from '../common/Breadcrumb'
 const cr = [
   {
     name: 'Home',
-    path: '/'
+    path: '/',
   },
   {
     name: 'Tenants',
-    path: '/tenants'
-  }
+    path: '/tenants',
+  },
 ]
 
 const Home = (props: any) => {
   return (
-    <Container className="pt-2">
-      <Card>
-        <Card.Header>Home</Card.Header>
-        <Card.Body></Card.Body>
-      </Card>
-    </Container>
+    <>
+      <Container className="pt-2">
+        <Card>
+          <Card.Header>Home</Card.Header>
+          <Card.Body></Card.Body>
+        </Card>
+      </Container>
+    </>
   )
 }
 

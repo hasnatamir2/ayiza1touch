@@ -68,12 +68,12 @@ select::-ms-expand {
 html {
   position: relative;
   min-height: 100%;
-  /* background-color: #e8e6e1 !important; */
+  background-color: #e8e6e1 !important;
 }
 
 body {
   overflow-x: hidden;
-  /* background-color: #e8e6e1 !important; */
+  background-color: #e8e6e1 !important;
   font-family: 'Nunito', sans-serif;
 }
 
@@ -283,6 +283,7 @@ body.fixed-nav {
   background-color: #fff;
   padding-top: 2px;
   padding-bottom: 1px;
+  border-radius: 0;
 }
 
 .card-header {
@@ -3018,13 +3019,13 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-  content: '\f111' !important; /* this is your text. You can also use UTF-8 character codes as I do here */
+  content: "•" !important; /* this is your text. You can also use UTF-8 character codes as I do here */
   font-family: FontAwesome;
-  font-size: 6px;
+  font-size: 16px;
   color: #494949;
   position: absolute;
-  top: 16px;
-  left: -23px;
+  top: 9px;
+  left: -15px;
 }
 
 .breadcrumb-item.active {
@@ -6719,6 +6720,13 @@ new styles
     card component
 */
 
+.card-container {
+  width: 100%;
+  border: 0;
+  max-width: inherit;
+  border-radius: 0;
+}
+
 .card-header {
   background-color: transparent;
 }
@@ -6733,6 +6741,19 @@ new styles
   border-radius: 0;
   border: 1px solid #e6e6e6;
   text-align: center;
+  margin-top: 0;
+}
+
+.tile-card .card-body .card-title {
+  font-size: 1rem;
+  font-weight: normal !important;
+  color: var(--c-blugry2);
+}
+
+.tile-card .card-body .card-text {
+  font-size: 2rem;
+  color: #000;
+  text-align: left;
 }
 
 /* 
@@ -6770,6 +6791,7 @@ custom form field
   border: 0;
   border-bottom: 1px solid darkgray;
   font-size: 0.8rem;
+  margin-bottom: 0.5rem;
 }
 
 .form-control[required] {
@@ -6781,6 +6803,10 @@ custom form field
   background-repeat: no-repeat;
   background-position: right .75rem center;
   background-size: 16px 12px;
+}
+
+.form-control:disabled {
+  cursor: not-allowed;
 }
 
 .col-form-label {
@@ -6849,4 +6875,17 @@ custom form field
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
   height: 20px;
+}
+
+.table .table-action-btn {
+  padding: 2px 5px;
+}
+
+.table .form-check-input[type="checkbox"] {
+  padding: 8px;
+}
+.table .form-check-input:checked[type="checkbox"] {
+  padding: 8px;
+  border-color: var(--c-acc2);
+  background-color: var(--c-acc2);
 }

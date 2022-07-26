@@ -20,7 +20,7 @@ const SidebarAdmin = (props: any) => {
           </Nav.Item>
         </Nav>
       </Col>
-      <Col sm={9} className="mt-3">
+      <Col sm={10}>
         {children}
       </Col>
     </Row>

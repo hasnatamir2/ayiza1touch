@@ -6,7 +6,7 @@ const AppLayout = (props: any) => {
   return (
     <div className="d-flex flex-column min-vh-100">
       <NavbarMain />
-      <Container>{props.children}</Container>
+      <>{props.children}</>
       <FooterMain />
     </div>
   )

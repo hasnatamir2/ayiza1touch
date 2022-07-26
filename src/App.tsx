@@ -8,13 +8,17 @@ import GuestRoute from './routes/GuestRoute'
 import AdminRoute from './routes/AdminRoute'
 
 import HomeContainer from './containers/Home/HomeContainer'
+
 import LoginContainer from './containers/Auth/Login/LoginContainer'
+
 import CompanyCodeContainer from './containers/CompanyCode/CompanyCodeContainer'
 import AddCompanyCodeContainer from './containers/CompanyCode/AddCompanyCodeContainer'
 
 // Admin Panel
 import AdminPanelContainer from './containers/AdminPanel/AdminPanelContainer'
 import TenantsContainer from './containers/Tenants/TenantsContainer'
+
+import AddTenantContainer from './containers/Tenants/AddTenantContainer'
 
 const App = () => {
   return (
@@ -28,6 +32,7 @@ const App = () => {
         <Route path="/adminPanel" element={<AdminRoute />}>
           <Route index element={<AdminPanelContainer />} />
           <Route path="tenants" element={<TenantsContainer />} />
+          <Route path="addTenant" element={<AddTenantContainer />} />
         </Route>
       </Routes>
   )

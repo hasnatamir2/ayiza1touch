@@ -1,29 +1,31 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Breadcrumb } from 'react-bootstrap'
 
-interface Crumbs {
-    name: string
-    path: string
+interface crumb {
+  name: string
+  path: string
 }
 
-const Breadcrumbs: React.FC = ({ crumbs }: any) => {
-  // Don't render a single breadcrumb.
-  if (crumbs.length <= 1) {
-    return null
-  }
+interface BreadcrumbProps {
+  crumbs: crumb[]
+}
+
+const Breadcrumbs = ({ crumbs }: BreadcrumbProps) => {
   return (
-    <div>
-      {/* Link back to any previous steps of the breadcrumb. */}
-      {crumbs.map(({ name, path }: any, key: any) =>
-        key + 1 === crumbs.length ? (
-          <span key={key}>{name}</span>
-        ) : (
-          <Link key={key} to={path}>
-            {name}
-          </Link>
+    <Breadcrumb className='breadcrumb'>
+      {crumbs.map((crumb, index) => {
+        return (
+          <Breadcrumb.Item key={index} active={index === crumbs.length - 1}>
+            {index === crumbs.length - 1 ? (
+              crumb.name
+            ) : (
+              <Link to={crumb.path}>{crumb.name}</Link>
+            )}
+          </Breadcrumb.Item>
         )
-      )}
-    </div>
+      })}
+    </Breadcrumb>
   )
 }
 export default Breadcrumbs

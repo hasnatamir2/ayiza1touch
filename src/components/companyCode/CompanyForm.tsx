@@ -16,9 +16,10 @@ const CompanyForm = ({
   errors,
   isLoading,
   navigate,
+  disableMode,
 }: any) => {
   return (
-    <Card className="border-0">
+    <Card className="card-container">
       <Card.Header>
         <div className="card-header-content">
           <span>Add Company Codes</span>
@@ -34,10 +35,10 @@ const CompanyForm = ({
             </Button>
             <Button
               type="submit"
-              disabled={isLoading}
               onClick={formHookSubmit(handleFormSubmit)}
               variant="outline-success"
               className="btn save-but"
+              disabled={disableMode}
             >
               {isLoading ? <Spinner animation="border" /> : 'Save'}
             </Button>
@@ -49,7 +50,7 @@ const CompanyForm = ({
           <Form
             noValidate
             validated={Object.keys(errors).length > 0}
-            className="center-form"
+            className="center-form m-auto"
           >
             <Form.Group as={Row} controlId="formBusinessName" className="mt-2">
               <Form.Label column sm={3}>
@@ -63,6 +64,7 @@ const CompanyForm = ({
                   feedbackTooltip
                   isInvalid={errors.businessName}
                   autoFill={false}
+                  disabled={disableMode}
                   {...registerInput('businessName', {
                     required: {
                       value: true,
@@ -107,6 +109,7 @@ const CompanyForm = ({
                   type="select"
                   placeholder="Business type"
                   required
+                  disabled={disableMode}
                   {...registerInput('businessType', {
                     required: true,
                     maxLength: 70,
@@ -155,6 +158,7 @@ const CompanyForm = ({
                   type="select"
                   placeholder="Business industry"
                   required
+                  disabled={disableMode}
                   {...registerInput('industry', {
                     required: true,
                     maxLength: 70,
@@ -201,7 +205,7 @@ const CompanyForm = ({
                   type="select"
                   placeholder="Business country"
                   required
-                  // defaultValue={values.country}
+                  disabled={disableMode}
                   {...registerInput('country', { required: true })}
                 >
                   <option>Select1</option>
@@ -248,7 +252,7 @@ const CompanyForm = ({
                   type="select"
                   placeholder="Business Currency"
                   required
-                  // defaultValue={values.currency}
+                  disabled={disableMode}
                   {...registerInput('currency', { required: true })}
                 >
                   <option>Select1</option>
@@ -295,7 +299,7 @@ const CompanyForm = ({
                   type="select"
                   placeholder="Time Zone"
                   required
-                  // defaultValue={values.timezone}
+                  disabled={disableMode}
                   {...registerInput('timezone', { required: true })}
                 >
                   <option>Select1</option>
@@ -341,7 +345,7 @@ const CompanyForm = ({
                   type="select"
                   placeholder="Financial Year"
                   required
-                  // defaultValue={values.financialYear}
+                  disabled={disableMode}
                   {...registerInput('financialYear', {
                     required: true,
                     valueAsNumber: true,
@@ -389,8 +393,9 @@ const CompanyForm = ({
                 <Form.Check
                   type="switch"
                   as="input"
-                  className="custom-switch"
+                  className="custom-switch ay_switch"
                   variant="success"
+                  disabled={disableMode}
                   {...registerInput('calculateVAT')}
                 />
                 <OverlayTrigger

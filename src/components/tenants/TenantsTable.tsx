@@ -1,22 +1,27 @@
-import { Table, Container, Button } from 'react-bootstrap'
+import { Table, Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const TenantsTable = (props: any) => {
-  const { tenants } = props
+  const {
+    tenants,
+    handleDelete,
+    handleEdit,
+    handleView,
+    handleCopy,
+  } = props
+
   return (
-    <Container className="pt-2">
-      <Table striped size="sm" className="mt-4 mb-0">
+    <>
+      <Table size="sm" className="mb-0">
         <thead>
           <tr>
             <th>#</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
+            <th>Id</th>
+            <th>Owner</th>
+            <th>Status</th>
             <th>Type</th>
-            <th>Country</th>
-            <th>Currency</th>
-            <th>Time Zone</th>
-            <th>Amount</th>
-            <th>Options</th>
+            <th className="text-end">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -25,23 +30,71 @@ const TenantsTable = (props: any) => {
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{tenant.name}</td>
-                <td>{tenant.email}</td>
-                <td>{tenant.phoneNumber}</td>
+                <td>{tenant.owner}</td>
+                <td>{tenant.status}</td>
                 <td>{tenant.type}</td>
-                <td>{tenant.country}</td>
-                <td>{tenant.currency}</td>
-                <td>{tenant.timeZone}</td>
-                <td>{tenant.amount}</td>
-                <td>
-                  <Button>Details</Button>
-                  <Button>Setup</Button>
+                <td className="text-end">
+                  <>
+                    <OverlayTrigger
+                      placement="bottom"
+                      overlay={<Tooltip>View</Tooltip>}
+                    >
+                      <Button
+                        size="sm"
+                        variant="outline-dark"
+                        className="mr-1 table-action-btn"
+                        onClick={() => handleView(tenant.id)}
+                      >
+                        <FontAwesomeIcon icon={solid('magnifying-glass')} />
+                      </Button>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                      placement="bottom"
+                      overlay={<Tooltip>Edit</Tooltip>}
+                    >
+                      <Button
+                        size="sm"
+                        variant="outline-dark"
+                        className="mr-1 table-action-btn"
+                        onClick={() => handleEdit(tenant.id)}
+                      >
+                        <FontAwesomeIcon icon={solid('pencil')} />
+                      </Button>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                      placement="bottom"
+                      overlay={<Tooltip>Copy</Tooltip>}
+                    >
+                      <Button
+                        size="sm"
+                        variant="outline-dark"
+                        className="mr-1 table-action-btn"
+                        onClick={() => handleCopy(tenant)}
+                      >
+                        <FontAwesomeIcon icon={solid('clipboard')} />
+                      </Button>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                      placement="bottom"
+                      overlay={<Tooltip>Delete</Tooltip>}
+                    >
+                      <Button
+                        size="sm"
+                        variant="outline-dark"
+                        className="mr-1 table-action-btn"
+                        onClick={() => handleDelete(tenant.id)}
+                      >
+                        <FontAwesomeIcon icon={solid('trash')} />
+                      </Button>
+                    </OverlayTrigger>
+                  </>
                 </td>
               </tr>
             )
           })}
         </tbody>
       </Table>
-    </Container>
+    </>
   )
 }
 

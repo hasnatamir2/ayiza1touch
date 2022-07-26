@@ -28,14 +28,14 @@ export const TenantsSlice = createSlice({
   name: 'tenants',
   initialState,
   reducers: {
-    setValues: (state, action: PayloadAction<any>) => {
-      state.tenants.push(action.payload)
+    setTenants: (state, action: PayloadAction<any>) => {
+      state.tenants = action.payload
     },
-    resetValues: (state) => {
+    resetTenants: (state) => {
       state.tenants = []
     },
   },
 })
 
-export const { setValues, resetValues } = TenantsSlice.actions
+export const { setTenants, resetTenants } = TenantsSlice.actions
 export default TenantsSlice.reducer

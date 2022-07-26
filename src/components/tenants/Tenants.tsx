@@ -1,22 +1,49 @@
-import { Button } from 'react-bootstrap'
+import { Button, Card, Spinner } from 'react-bootstrap'
 import TenantsTable from './TenantsTable'
 
 const Tenants = (props: any) => {
-  const { tenants, isLoading, Navigate } = props
+  const {
+    tenants,
+    loading,
+    Navigate,
+    handleMultiDelete,
+    handleSelected,
+    handleDelete,
+    handleEdit,
+    handleView,
+    handleCopy,
+  } = props
   return (
-    <div className="tenants">
-      <div className="w-100 d-flex justify-content-between align-items-center">
-        <h4 className="m-0">Tenants</h4>
-        <Button
-          variant="outline-primary"
-          disabled
-          onClick={() => Navigate('/adminPanel/addTenant')}
-        >
-          New Tenant
-        </Button>
-      </div>
-      <TenantsTable tenants={tenants} />
-    </div>
+    <Card className="card-container tenants">
+      <Card.Header>
+        <div className="card-header-content">
+          <h4 className="m-0">Tenants</h4>
+          <Button
+            className="btn-blue"
+            onClick={() => Navigate('/adminPanel/addTenant')}
+          >
+            Add
+          </Button>
+        </div>
+      </Card.Header>
+      <Card.Body>
+        {loading ? (
+          <div className="text-center">
+            <Spinner animation="border" />
+          </div>
+        ) : (
+          <TenantsTable
+            tenants={tenants}
+            selectedMultiId={[]}
+            handleSelected={handleSelected}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+            handleView={handleView}
+            handleCopy={handleCopy}
+          />
+        )}
+      </Card.Body>
+    </Card>
   )
 }
 

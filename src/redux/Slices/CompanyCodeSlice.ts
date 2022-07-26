@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { fetchCompanies } from '../Actions/CompanyCodeActions'
 
 interface CompanyCode {
+  id: string
   businessName: string
   businessType: string
   industry: string
@@ -34,20 +34,21 @@ export const CompanyCodeSlice = createSlice({
     resetValues: (state) => {
       state.companies = []
     },
-  },
-  extraReducers: {
-    [fetchCompanies.pending.type]: (state) => {
-      state.isLoading = true
+    deleteCompanyCode: (state, action: PayloadAction<any>) => {
+      state.companies = state.companies.filter(
+        (company) => !action.payload.includes(company.id)
+      )
     },
-    [fetchCompanies.fulfilled.type]: (state, action: PayloadAction<any>) => {
-      state.isLoading = false
-      state.companies = [...state.companies, action.payload]
+    updateCompanyCode: (state, action: PayloadAction<any>) => {
+      state.companies = state.companies.map((company) => {
+        if (company.id === action.payload.id) {
+          return action.payload
+        }
+        return company
+      })
     },
-    [fetchCompanies.rejected.type]: (state) => {
-      state.isLoading = false
-    },
-  },
+  }
 })
 
-export const { setValues, resetValues } = CompanyCodeSlice.actions
+export const { setValues, resetValues, updateCompanyCode, deleteCompanyCode } = CompanyCodeSlice.actions
 export default CompanyCodeSlice.reducer
