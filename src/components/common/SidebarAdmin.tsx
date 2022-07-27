@@ -7,7 +7,7 @@ const SidebarAdmin = (props: any) => {
   const { children } = props
   return (
     <Row>
-      <Col sm={2}>
+      <Col sm={2} className="pr-0">
         <Nav
           variant="tabs"
           className="d-md-block bg-light flex-column min-vh-90 sidebar-menu"
@@ -20,7 +20,7 @@ const SidebarAdmin = (props: any) => {
           </Nav.Item>
         </Nav>
       </Col>
-      <Col sm={10}>
+      <Col sm={10} className="pl-0">
         {children}
       </Col>
     </Row>

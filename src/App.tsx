@@ -7,12 +7,17 @@ import { Routes, Route } from 'react-router-dom'
 import GuestRoute from './routes/GuestRoute'
 import AdminRoute from './routes/AdminRoute'
 
-import HomeContainer from './containers/Home/HomeContainer'
 
 import LoginContainer from './containers/Auth/Login/LoginContainer'
 
+// Home
+import HomeContainer from './containers/Home/HomeContainer'
+
 import CompanyCodeContainer from './containers/CompanyCode/CompanyCodeContainer'
 import AddCompanyCodeContainer from './containers/CompanyCode/AddCompanyCodeContainer'
+
+import IncomeTaxContainer from './containers/IncomeTax/IncomeTaxContainer'
+import FileIncomeTaxContainer from './containers/IncomeTax/FileIncomeTaxContainer'
 
 // Admin Panel
 import AdminPanelContainer from './containers/AdminPanel/AdminPanelContainer'
@@ -28,6 +33,8 @@ const App = () => {
           <Route index element={<HomeContainer />} />
           <Route path="companyCode" element={<CompanyCodeContainer />} />
           <Route path="addCompanyCode" element={<AddCompanyCodeContainer />} />
+          <Route path="incomeTax" element={<IncomeTaxContainer />} />
+          <Route path="fileIncomeTax" element={<FileIncomeTaxContainer />} />
         </Route>
         <Route path="/adminPanel" element={<AdminRoute />}>
           <Route index element={<AdminPanelContainer />} />

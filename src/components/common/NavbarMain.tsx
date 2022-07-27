@@ -15,12 +15,6 @@ const NavbarMain = (props: any) => {
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll" className="justify-content-end">
         <Nav className="" navbarScroll>
-          <Nav.Link>
-            <Link to="/companyCode">
-              {' '}
-              <FontAwesomeIcon icon={solid('add')} /> Add Company Code
-            </Link>
-          </Nav.Link>
           <NavDropdown
             title={<FontAwesomeIcon icon={solid('user')} />}
             align="end"

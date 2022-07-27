@@ -2886,6 +2886,7 @@ select.form-control:not([size]):not([multiple]) {
 .save-but:hover {
   background-color: #98cc58;
   color: #fff;
+  border-color: #98cc58;
 }
 
 .purple-but {
@@ -6725,6 +6726,7 @@ new styles
   border: 0;
   max-width: inherit;
   border-radius: 0;
+  margin-top: 0;
 }
 
 .card-header {
@@ -6744,18 +6746,31 @@ new styles
   margin-top: 0;
 }
 
+
+.tile-card .card-body {
+  padding-bottom: 0.5rem;
+}
+
 .tile-card .card-body .card-title {
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: normal !important;
-  color: var(--c-blugry2);
+  color: var(--c-dark1);
+  text-transform: uppercase;
 }
 
 .tile-card .card-body .card-text {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #000;
   text-align: left;
 }
 
+.tile-card:hover {
+  background-color: #98cc58;
+}
+
+.tile-card:hover .card-body .card-title, .tile-card:hover .card-body .card-text {
+  color: white;
+}
 /* 
     form component
 */

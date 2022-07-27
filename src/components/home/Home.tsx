@@ -1,26 +1,34 @@
-import { Container, Card } from 'react-bootstrap'
-import Breadcrumbs from '../common/Breadcrumb'
-
-const cr = [
-  {
-    name: 'Home',
-    path: '/',
-  },
-  {
-    name: 'Tenants',
-    path: '/tenants',
-  },
-]
+import { Container, Card, Row, Col } from 'react-bootstrap'
+import TileCard from '../common/TileCard'
+import { useNavigate } from 'react-router-dom'
 
 const Home = (props: any) => {
+  const navigate = useNavigate()
+
   return (
     <>
-      <Container className="pt-2">
-        <Card>
-          <Card.Header>Home</Card.Header>
-          <Card.Body></Card.Body>
+      <div className="py-2 px-4 d-flex justify-content-center">
+        <Card className="card-container">
+          <Card.Body>
+            <Row>
+              <Col sm={3}>
+                <TileCard
+                  title="Company Code"
+                  icon="building-columns"
+                  link={'/companyCode'}
+                />
+              </Col>
+              <Col sm={3}>
+                <TileCard
+                  title="File Income Tax"
+                  icon="building-columns"
+                  link={'/incomeTax'}
+                />
+              </Col>
+            </Row>
+          </Card.Body>
         </Card>
-      </Container>
+      </div>
     </>
   )
 }
