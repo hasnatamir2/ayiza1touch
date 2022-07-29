@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import Tenants from '../../components/tenants/Tenants'
-import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useQuery, useMutation } from '@apollo/client'
 import { TENANTS } from '../../graphql/Queries/tenantQueries'
@@ -21,26 +20,31 @@ const crumbs = [
 
 const TenantsContainer = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
 
   const [selectedId, setSelectedId] = useState<any>(null)
   const [selectedMultiId, setSelectedMultiId] = useState<any>([])
   const [show, setShow] = useState(false)
+  const [tenants, setTenants] = useState<any>([])
 
   // GRAPHQL
-  const { error, loading, data } = useQuery(TENANTS)
+  const { error, loading, data, refetch } = useQuery(TENANTS)
   const [deleteTenant, { error: deleteError }] = useMutation(DELETE_TENANT, {
     refetchQueries: [{ query: TENANTS }],
+    errorPolicy: 'none',
   })
 
   useEffect(() => {
+    refetch()
+  }, [])
+
+  useEffect(() => {
     if (data) {
+      setTenants(data.tenants)
     }
   }, [data, error, loading])
 
   useEffect(() => {
     if (deleteError) {
-      // console.log(deleteError)
     }
   }, [deleteError])
 
@@ -51,14 +55,17 @@ const TenantsContainer = () => {
     setSelectedId(id)
   }
 
-  const handleDeleteConfirm = () => {
-    // navigate('/companyCode')
-    deleteTenant({
-      variables: {
-        id: selectedId,
-      },
-    })
-    setShow(false)
+  const handleDeleteConfirm = async () => {
+    try {
+      const data = await deleteTenant({
+        variables: {
+          id: selectedId,
+        },
+      })
+      setShow(false)
+    } catch (error) {
+      setShow(false)
+    }
   }
 
   const handleEdit = (id: number) => {
@@ -94,7 +101,6 @@ const TenantsContainer = () => {
     }
   }
 
-  const { tenants } = useSelector((state: any) => state.tenants)
   return (
     <>
       <ConfirmModal
@@ -105,7 +111,7 @@ const TenantsContainer = () => {
       />
       <Breadcrumbs crumbs={crumbs} />
       <Tenants
-        tenants={tenants}
+        tenants={tenants || []}
         loading={loading}
         Navigate={navigate}
         handleSelected={handleSelection}

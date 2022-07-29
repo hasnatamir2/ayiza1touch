@@ -8,6 +8,7 @@ import { ApolloProvider } from '@apollo/client'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import client from './graphql/Client'
+import Toast from './components/common/ShowToast'
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 
@@ -18,6 +19,7 @@ root.render(
     <ApolloProvider client={client}>
       <Provider store={store}>
         <BrowserRouter>
+          <Toast />
           <App />
         </BrowserRouter>
       </Provider>

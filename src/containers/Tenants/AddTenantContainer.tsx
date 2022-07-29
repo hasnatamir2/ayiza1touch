@@ -9,6 +9,7 @@ import {
   UPDATE_TENANT,
 } from '../../graphql/Mutations/tenantMutations'
 import { TENANT } from '../../graphql/Queries/tenantQueries'
+import { toast } from 'react-toastify'
 
 type TenantData = {
   isLockedForAdmin: boolean
@@ -46,13 +47,14 @@ const AddTenantContainer: React.FC = () => {
   const id = searchParams.get('id')
 
   const [tenantCreate, { data, loading, error }] = useMutation(CREATE_TENANT)
-  const [tenantUpdate, { data: updatedTenant, loading: tenantLoading }] =
-    useMutation(UPDATE_TENANT, {
-      refetchQueries: [{ query: TENANT, variables: { id } }],
-    })
+  const [tenantUpdate, { data: updatedTenant }] = useMutation(UPDATE_TENANT, {
+    refetchQueries: [{ query: TENANT, variables: { id } }],
+    errorPolicy: 'ignore',
+  })
 
   const { data: tenantData } = useQuery(TENANT, {
     variables: { id },
+    skip: !id,
   })
 
   const [disableMode, setDisableMode] = useState(false)
@@ -76,13 +78,24 @@ const AddTenantContainer: React.FC = () => {
   }, [tenantData])
 
   useEffect(() => {
-    if (data || updatedTenant) {
+    if (data) {
+      toast.success('Tenant created successfully')
       navigate('/adminPanel/tenants')
     }
     if (error) {
       console.log(error)
     }
-  }, [data, loading, error, updatedTenant])
+  }, [data, loading, error])
+
+  useEffect(() => {
+    if (updatedTenant) {
+      toast.success('Tenant updated successfully')
+      navigate('/adminPanel/tenants')
+    }
+    if (error) {
+      console.log(error)
+    }
+  }, [updatedTenant])
 
   const handleFormSubmit = (values: any) => {
     if (mode === 'edit') {

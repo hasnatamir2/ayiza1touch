@@ -44,11 +44,7 @@ const IncomeTaxForm = (props: any) => {
                 className="btn save-but"
                 disabled={disableMode}
               >
-                {isLoading ? (
-                  <Spinner animation="border" />
-                ) : (
-                  'Submit Periodic Update'
-                )}
+                {isLoading ? <Spinner animation="border" /> : 'Save Tax Values'}
               </Button>
             </div>
           </div>
@@ -454,7 +450,9 @@ const IncomeTaxForm = (props: any) => {
                           <h6 className="text-center text-muted">Allowable</h6>
                         </Col>
                         <Col sm={4}>
-                          <h6 className="text-center text-muted">Dis-Allowable</h6>
+                          <h6 className="text-center text-muted">
+                            Dis-Allowable
+                          </h6>
                         </Col>
                       </Row>
                       <Form.Group
