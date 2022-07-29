@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { useNavigate } from 'react-router-dom'
 
 const TileCard = (props: any) => {
-  const { title, icon, link } = props
+  const { title, icon, link, counter = null, color = 'darkblue' } = props
   const navigate = useNavigate()
 
   return (
@@ -13,10 +12,10 @@ const TileCard = (props: any) => {
           <div className="boxlist-item__heading--small">{title}</div>
           <div className="boxlist-item__iconbox">
             {' '}
-            <i className="fa fa-3x fa-fw fa-money"></i>{' '}
+            <FontAwesomeIcon icon={['fas', icon]} style={{ color }} />
           </div>
           <div className="boxlist-item__counter">
-            <span style={{ fontSize: 12, color: 'gray' }}></span>
+            <span style={{ fontSize: 12, color: 'gray' }}>{counter}</span>
           </div>
         </div>
       </div>

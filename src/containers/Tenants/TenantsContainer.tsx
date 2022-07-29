@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 import { useQuery, useMutation } from '@apollo/client'
 import { TENANTS } from '../../graphql/Queries/tenantQueries'
 import { DELETE_TENANT } from '../../graphql/Mutations/tenantMutations'
-import { setTenants } from '../../redux/Slices/TanentsSlice'
 import Breadcrumbs from '../../components/common/Breadcrumb'
 import ConfirmModal from '../../components/common/ConfirmModal'
 
@@ -36,7 +35,6 @@ const TenantsContainer = () => {
 
   useEffect(() => {
     if (data) {
-      dispatch(setTenants(data.tenants))
     }
   }, [data, error, loading])
 

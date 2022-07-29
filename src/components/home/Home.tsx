@@ -21,8 +21,9 @@ const Home = (props: any) => {
               <Col sm={3}>
                 <TileCard
                   title="File Income Tax"
-                  icon="building-columns"
+                  icon="wallet"
                   link={'/incomeTax'}
+                  color="rebeccapurple"
                 />
               </Col>
             </Row>

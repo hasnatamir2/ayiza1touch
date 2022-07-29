@@ -14,27 +14,31 @@ const AdminPanel = () => {
                 title="Bank & Cash"
                 icon="building-columns"
                 link={'/adminPanel'}
+                color="darkblue"
               />
             </Col>
             <Col sm={3}>
               <TileCard
                 title="Customer Invoice"
-                icon="building-columns"
+                icon="money-bill"
                 link={'/adminPanel'}
+                color="rebeccapurple"
               />
             </Col>
             <Col sm={3}>
               <TileCard
                 title="supplier bills"
-                icon="building-columns"
+                icon="money-bill"
                 link={'/adminPanel'}
+                color="orangered"
               />
             </Col>
             <Col sm={3}>
               <TileCard
                 title="universal analytics"
-                icon="building-columns"
+                icon="chart-column"
                 link={'/adminPanel'}
+                color="royalblue"
               />
             </Col>
           </Row>

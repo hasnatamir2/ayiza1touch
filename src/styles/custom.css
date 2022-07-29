@@ -325,27 +325,27 @@ body.fixed-nav {
 }
 
 /* start fontawsome icon colours*/
-.clr-item:nth-child(1) i {
+.clr-item:nth-child(1) svg {
   color: darkblue;
 }
 
-.clr-item:nth-child(2) i {
+.clr-item:nth-child(2) svg {
   color: rebeccapurple;
 }
 
-.clr-item:nth-child(3) i {
+.clr-item:nth-child(3) svg {
   color: orangered;
 }
 
-.clr-item:nth-child(4) i {
+.clr-item:nth-child(4) svg {
   color: royalblue;
 }
 
-.clr-item:nth-child(5) i {
+.clr-item:nth-child(5) svg {
   color: mediumseagreen;
 }
 
-.clr-item:nth-child(6) i {
+.clr-item:nth-child(6) svg {
   color: darkred;
 }
 
@@ -729,8 +729,9 @@ body.fixed-nav {
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: start;
+  align-items: center;
+  font-size: 45px;
 }
 
 .boxlist-item__counter {
@@ -6832,6 +6833,14 @@ custom form field
   border: 1px solid #000;
 }
 
+.clear-input {
+  border: 1px solid #00000011;
+}
+
+.clear-input:focus {
+  border: 1px solid dodgerblue;
+}
+
 /* 
  table component
 */
@@ -6890,6 +6899,7 @@ custom form field
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
   height: 20px;
+  margin-bottom: 0;
 }
 
 .table .table-action-btn {

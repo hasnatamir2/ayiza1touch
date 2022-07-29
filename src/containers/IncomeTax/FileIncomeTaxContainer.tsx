@@ -4,6 +4,7 @@ import Breadcrumbs from '../../components/common/Breadcrumb'
 import { useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { Modal, Button } from 'react-bootstrap'
 
 const crumbs = [
   {
@@ -31,6 +32,7 @@ const FileIncomeTaxContainer = () => {
   } = useForm()
 
   const [disableMode, setDisableMode] = useState(false)
+  const [modalShow, setModalShow] = useState(false)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -38,30 +40,7 @@ const FileIncomeTaxContainer = () => {
   const mode = searchParams.get('mode')
   const id = searchParams.get('id')
 
-  const { companies, isLoading } = useSelector(
-    (state: any) => state.companyCode
-  )
-
   const [consolidatedExpenses, setConsolidatedExpenses] = useState(false)
-
-  useEffect(() => {
-    if (mode === 'view') {
-      setDisableMode(true)
-    } else if (mode === 'edit') {
-      setDisableMode(false)
-    }
-    let company = companies.find((company: any) => company.id === Number(id))
-    if (company) {
-      // setValue('businessName', company.businessName)
-      // setValue('businessType', company.businessType)
-      // setValue('industry', company.industry)
-      // setValue('country', company.country)
-      // setValue('currency', company.currency)
-      // setValue('timezone', company.timezone)
-      // setValue('financialYear', company.financialYear)
-      // setValue('calculateVAT', company.calculateVAT)
-    }
-  }, [companies])
 
   useEffect(() => {
     const { fileConsolidatedExpenses } = watch()
@@ -72,20 +51,37 @@ const FileIncomeTaxContainer = () => {
     if (mode === 'edit') {
       navigate('/incomeTax')
     } else {
-      let id = Math.floor(Math.random() * 10000)
-
-      navigate('/incomeTax')
+      setModalShow(true)
     }
   }
   return (
     <>
       <Breadcrumbs crumbs={crumbs} />
+      <Modal show={modalShow} onHide={() => setModalShow(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          I agree, that this VAT Submission has been auditied and processed
+          before sending to HMRC by Ayiza Limited. It cannot be changed. I have
+          ensured that all boxes of VAT return are correct and documented this.
+          (HMRC_0000019)
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setModalShow(false)}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={() => setModalShow(false)}>
+            Yes - I Agree!
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <IncomeTaxForm
         handleFormSubmit={handleFormSubmit}
         formHookSubmit={handleSubmit}
         registerInput={register}
         errors={errors}
-        isLoading={isLoading}
+        isLoading={false}
         navigate={navigate}
         disableMode={disableMode}
         getValues={getValues}
