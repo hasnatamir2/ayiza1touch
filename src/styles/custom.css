@@ -6914,3 +6914,43 @@ custom form field
   border-color: var(--c-acc2);
   background-color: var(--c-acc2);
 }
+
+/* 
+CUSTOM
+*/
+
+.vertival-stepper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 400px;
+  align-items: center;
+}
+
+.vertival-stepper .stepper-step-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  
+}
+
+.vertival-stepper .stepper-step-container .stepper-step {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background-color: gray;
+  color: white;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 7px;
+}
+
+.vertival-stepper .steppers-step-active .stepper-step{
+  background-color: #3eb0f7;
+  color: white;
+}
+
+.vertival-stepper .steppers-step-active .stepper-step-label {
+  color: #3eb0f7;
+}

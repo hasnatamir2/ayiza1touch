@@ -1,10 +1,24 @@
 import IncomeTaxTable from './IncomeTaxTable'
 
 const IncomeTax = (props: any) => {
-  const { navigate } = props
+  const {
+    navigate,
+    getBusinessNames,
+    niNumber,
+    setNiNumber,
+    businessData,
+    mode,
+  } = props
   return (
     <>
-      <IncomeTaxTable navigate={navigate} />
+      <IncomeTaxTable
+        navigate={navigate}
+        getBusinessNames={getBusinessNames}
+        niNumber={niNumber}
+        setNiNumber={setNiNumber}
+        businessData={businessData}
+        mode={mode}
+      />
     </>
   )
 }

@@ -16,12 +16,20 @@ const crumbs = [
     path: '/incomeTax',
   },
   {
+    name: 'Ni Number',
+    path: '/niNumber',
+  },
+  {
+    name: 'Get Business Data',
+    path: '/niNumber?mode=data',
+  },
+  {
     name: 'File Income Tax',
     path: '/fileIncomeTax',
   },
 ]
 
-const FileIncomeTaxContainer = () => {
+const FileIncomeTaxContainer = (props: any) => {
   const {
     register,
     handleSubmit,
@@ -43,17 +51,22 @@ const FileIncomeTaxContainer = () => {
   const [consolidatedExpenses, setConsolidatedExpenses] = useState(false)
 
   useEffect(() => {
+    if (mode === 'view') {
+      setDisableMode(true)
+    }
+  }, [])
+
+  useEffect(() => {
     const { fileConsolidatedExpenses } = watch()
     setConsolidatedExpenses(fileConsolidatedExpenses)
   }, [watch()])
 
   const handleFormSubmit = (values: any) => {
-    if (mode === 'edit') {
-      navigate('/incomeTax')
-    } else {
-      setModalShow(true)
+    if (mode === 'view') {
+      setDisableMode(true)
     }
   }
+
   return (
     <>
       <Breadcrumbs crumbs={crumbs} />
@@ -86,6 +99,7 @@ const FileIncomeTaxContainer = () => {
         disableMode={disableMode}
         getValues={getValues}
         consolidatedExpenses={consolidatedExpenses}
+        mode={mode}
       />
     </>
   )

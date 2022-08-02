@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   Spinner,
   Card,
@@ -20,18 +21,18 @@ const IncomeTaxForm = (props: any) => {
     disableMode,
     consolidatedExpenses,
     getValues,
+    mode,
   } = props
   return (
     <div className="py-2 px-4 d-flex justify-content-center mb-5">
       <Card className="card-container">
         <Card.Header>
           <div className="card-header-content">
-            <span>File Income Tax</span>
+            <span>Prepare Income Tax</span>
             <div>
               <Button
                 type="submit"
-                disabled={isLoading}
-                onClick={() => navigate(-1)}
+                onClick={() => navigate('/incomeTax')}
                 variant="outline-secondary"
                 className="btn back-but"
               >
@@ -42,16 +43,15 @@ const IncomeTaxForm = (props: any) => {
                 onClick={formHookSubmit(handleFormSubmit)}
                 variant="outline-success"
                 className="btn save-but"
-                disabled={disableMode}
               >
-                {isLoading ? <Spinner animation="border" /> : 'Save Tax Values'}
+                {mode === 'view' ? 'Submit HRMC' : 'Save'}
               </Button>
             </div>
           </div>
         </Card.Header>
         <Card.Body>
           <>
-            <Row className="justify-content-center">
+            <Row className="justify-content-center align-items-center">
               <Col sm={7}>
                 <Form
                   noValidate
@@ -1036,9 +1036,6 @@ const IncomeTaxForm = (props: any) => {
                     </>
                   )}
                 </Form>
-              </Col>
-              <Col sm={2}>
-                <Button className="btn btn-blue mt-2">Get Business Name</Button>
               </Col>
             </Row>
           </>

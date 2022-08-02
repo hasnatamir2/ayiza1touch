@@ -14,104 +14,122 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 const IncomeTaxTable = (props: any) => {
   const {
-    companies,
+    businessData,
+    niNumber,
+    setNiNumber,
     isLoading,
     navigate,
-    page,
-    setPage,
-    pageSize,
-    setPageSize,
-    handleDelete,
-    handleEdit,
-    handleView,
-    handleCopy,
-    handleSelected,
-    selectedMultiId,
-    handleMultiDelete,
-    handleSearch,
-    search,
+    mode,
+    getBusinessNames,
   } = props
   return (
     <div className="py-2 px-4 d-flex justify-content-center">
       <Card className="card-container">
         <Card.Header>
           <div className="card-header-content">
-            <span>Income Tax</span>
-            {/* <Form.Select className="quck-action w-25">
-              <option>Quick Actions</option>
-            </Form.Select> */}
-          </div>
-        </Card.Header>
-        <Card.Body>
-          <Row className="table-action-panel">
-            <Col sm={6} className="d-flex">
+            <span>
+              {mode === 'data' ? 'Get Business Names' : 'Business Names'}
+            </span>
+            <div>
               <Button
                 type="submit"
                 disabled={isLoading}
-                onClick={() => navigate('/fileIncomeTax')}
-                className="btn btn-blue"
+                onClick={() => navigate('/incomeTax')}
+                className="btn back-but"
               >
-                Add
+                Back
               </Button>
               <Button
-                disabled={isLoading || selectedMultiId?.length < 1}
-                className="red-btn"
-                variant="outline-danger"
-                onClick={handleMultiDelete}
+                type="submit"
+                disabled={isLoading}
+                onClick={() => navigate('/niNumber?mode=data')}
+                className="btn save-but"
               >
-                Delete
-              </Button>
-              <div className="d-flex align-items-center w-25">
-                <span className="mr-2 label">Show</span>
-                <Form.Select value={pageSize} onChange={setPageSize}>
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                </Form.Select>
-              </div>
-            </Col>
-            <Col sm={2}>
-              <Form.Control
-                type="text"
-                placeholder="Search"
-                className="table-search"
-                size="lg"
-                // onChange={handleSearch}
-              />
-            </Col>
-          </Row>
-          <Table size="sm" className="mb-0">
-            <thead>
-              <tr>
-                <th>
-                  <Form.Check
-                    type="checkbox"
-                    as="input"
-                    className="custom-switch ay_switch"
-                    // checked={selectedMultiId.length > 0}
-                  />
-                </th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Industry</th>
-                <th>Currency</th>
-                <th>Financial Year</th>
-                <th className="text-end">Actions</th>
-              </tr>
-            </thead>
-          </Table>
-          <div className="table-pagination-footer">
-            <span className="table-record-length">Showing 1 of 1 entries</span>
-            <div className="table-footer-input-group">
-              <Button variant="outline-secondary" size="sm">
-                <FontAwesomeIcon icon={solid('chevron-left')} />
-              </Button>
-              <Form.Control type="text" value={1} />
-              <Button variant="outline-secondary" size="sm">
-                <FontAwesomeIcon icon={solid('chevron-right')} />
+                Save
               </Button>
             </div>
           </div>
+        </Card.Header>
+        <Card.Body>
+          <Row className="table-action-panel justify-content-start align-items-center">
+            <Col sm={2} className="pr-0">
+              <div className=" label">NI Number</div>
+            </Col>
+            <Col sm={4}>
+              <Form.Select value={niNumber} onChange={setNiNumber}>
+                <option value="NN101232Z">NN101232Z</option>
+                <option value="NN101220A">NN101220A</option>
+                <option value="NN101220A">NN101220A</option>
+              </Form.Select>
+              <OverlayTrigger
+                placement="bottom"
+                overlay={
+                  <Tooltip>
+                    <span className="muted">
+                      NI Number is used to get the business names for income tax
+                      declaration for self employed businesses.
+                    </span>
+                  </Tooltip>
+                }
+              >
+                <span
+                  className="help-tp mt-2"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                >
+                  i
+                </span>
+              </OverlayTrigger>
+            </Col>
+            <Col>
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className="btn btn-blue ml-2"
+                onClick={getBusinessNames}
+              >
+                Get Business Names
+              </Button>
+            </Col>
+          </Row>
+          {mode === 'data' && (
+            <>
+              <Table size="sm" className="mb-0">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Trading Name</th>
+                    <th>Type Of Business</th>
+                    <th className="text-end">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {businessData.map((item: any, index: number) => (
+                    <>
+                      <tr key={index}>{item.businessId}</tr>
+                      <tr key={index}>{item.tradingName}</tr>
+                      <tr key={index}>{item.typeOfBusiness}</tr>
+                      <tr key={index}></tr>
+                    </>
+                  ))}
+                </tbody>
+              </Table>
+              <div className="table-pagination-footer">
+                <span className="table-record-length">
+                  Showing 1 of 1 entries
+                </span>
+                <div className="table-footer-input-group">
+                  <Button variant="outline-secondary" size="sm">
+                    <FontAwesomeIcon icon={solid('chevron-left')} />
+                  </Button>
+                  <Form.Control type="text" value={1} />
+                  <Button variant="outline-secondary" size="sm">
+                    <FontAwesomeIcon icon={solid('chevron-right')} />
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
         </Card.Body>
       </Card>
     </div>

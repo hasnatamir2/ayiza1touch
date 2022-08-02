@@ -18,7 +18,7 @@ import AddCompanyCodeContainer from './containers/CompanyCode/AddCompanyCodeCont
 
 import IncomeTaxContainer from './containers/IncomeTax/IncomeTaxContainer'
 import FileIncomeTaxContainer from './containers/IncomeTax/FileIncomeTaxContainer'
-
+import IncomeTaxTimeline from './containers/IncomeTax/IncomeTaxTimeline'
 // Admin Panel
 import AdminPanelContainer from './containers/AdminPanel/AdminPanelContainer'
 import TenantsContainer from './containers/Tenants/TenantsContainer'
@@ -33,7 +33,8 @@ const App = () => {
           <Route index element={<HomeContainer />} />
           <Route path="companyCode" element={<CompanyCodeContainer />} />
           <Route path="addCompanyCode" element={<AddCompanyCodeContainer />} />
-          <Route path="incomeTax" element={<IncomeTaxContainer />} />
+          <Route path="incomeTax" element={<IncomeTaxTimeline />} />
+          <Route path="niNumber" element={<IncomeTaxContainer />} />
           <Route path="fileIncomeTax" element={<FileIncomeTaxContainer />} />
         </Route>
         <Route path="/adminPanel" element={<AdminRoute />}>
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="tenants" element={<TenantsContainer />} />
           <Route path="addTenant" element={<AddTenantContainer />} />
         </Route>
+        <Route path="/*" element={<HomeContainer />} />
       </Routes>
   )
 }
